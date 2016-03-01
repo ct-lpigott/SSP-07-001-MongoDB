@@ -16,8 +16,9 @@ var MongoClient = mongod.MongoClient;
 var assert = require("assert");
 
 
-//var connectionString = process.env.CUSTOMCONNSTR_SSP-07-001-MongoDB || process.env.RemoteMongoURL;
-var connectionString = "mongodb://localhost:27017/test";
+//var connectionString = process.env.CUSTOMCONNSTR_SSP07001MongoDB || "mongodb://localhost:27017/test";
+
+var connectionString = process.env.RemoteMongoURL || "mongodb://localhost:27017/test";
 
 MongoClient.connect(connectionString, function(err, db){
     assert.equal(null, err);

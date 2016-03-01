@@ -10,6 +10,22 @@ var users = require('./routes/users');
 
 var app = express();
 
+//var db = require("./database/db.js");
+var mongod = require("mongodb");
+var MongoClient = mongod.MongoClient;
+var assert = require("assert");
+
+
+//var connectionString = process.env.CUSTOMCONNSTR_SSP-07-001-MongoDB || process.env.RemoteMongoURL;
+var connectionString = "mongodb://localhost:27017/test";
+
+MongoClient.connect(connectionString, function(err, db){
+    assert.equal(null, err);
+    console.log("I'm connected to " + connectionString + " :)");
+    db.close();
+});
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
